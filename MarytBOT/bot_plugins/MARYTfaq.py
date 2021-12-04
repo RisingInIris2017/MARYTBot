@@ -9,7 +9,7 @@ __plugin_usage__ = '''用法：响应出现在下表中的问题'''
 @on_command('简介', permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
 async def _(session: CommandSession):
     await session.send('''我们的服务器版本为1.12.2，
-1整合包为MCBBS精华整合包：
+整合包为MCBBS精华整合包：
 [BGM][1.12.2][中英双语|拔刀剑]祝福或诅咒：无限力量之征——关于剑与理想的故事
 https://www.mcbbs.net/thread-1225741-1-1.html
 以热量与气候和拔刀剑为核心模组，
@@ -178,7 +178,7 @@ https://www.mcmod.cn/post/1145.html
 1. 查看【记忆中的幻想乡】手册，在【祭坛】一节有投影工具；
 2. https://www.mcmod.cn/item/192891.html''')
 
-@on_natural_language(keywords={'教程', '玩法'})
+@on_natural_language(keywords={'教程', '玩法','攻略'})
 async def _(session: NLPSession):
     return IntentCommand(90.0, '教程')
 
@@ -203,3 +203,18 @@ http://afdian.net/@maryt
 @on_natural_language(keywords={'会员', '充值', '赞助'})
 async def _(session: NLPSession):
     return IntentCommand(90.0, '会员')
+
+@on_command('任务', permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+async def _(session: CommandSession):
+    await session.send('''MARYT 10th v2.3.0版本加入了教程任务，
+没有使用过任务系统的玩家，
+请按照如下步骤打开任务系统：
+1. 打开背包
+2. 点击左上角的书本标志
+3. 直接点击创建组
+4. 这样你就可以查看任务系统了。
+
+任务没有奖励，仅仅作为游玩引导。''')
+@on_natural_language(keywords={'任务'})
+async def _(session: NLPSession):
+    return IntentCommand(90.0, '任务')

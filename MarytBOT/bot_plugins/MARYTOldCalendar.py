@@ -90,6 +90,6 @@ async def _(session: CommandSession):
     todayGAB = await todayGoodAndBad()
     await session.send(todayGAB)
 
-@on_natural_language(keywords={'黄历'})
+@on_natural_language(keywords={'黄历'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '黄历')

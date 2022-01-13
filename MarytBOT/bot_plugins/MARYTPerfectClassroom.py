@@ -37,6 +37,6 @@ async def _(session: CommandSession):
     tips = await randomTips()
     await session.send(tips)
 
-@on_natural_language(keywords={'教室', '贴士'})
+@on_natural_language(keywords={'教室', '贴士'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '教室')

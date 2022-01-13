@@ -18,7 +18,7 @@ https://www.mcbbs.net/thread-1225741-1-1.html
 讲述了一个铸剑匠人在前人的引导下，
 在追逐理想的道路上一步步成长的故事。''')
 
-@on_natural_language(keywords={'简介'})
+@on_natural_language(keywords={'简介'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '简介')
 
@@ -35,7 +35,7 @@ https://www.mcmod.cn/class/1508.html
 Macaw的家具
 https://www.mcmod.cn/class/2573.html''')
 
-@on_natural_language(keywords={'模组'})
+@on_natural_language(keywords={'模组'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '模组')
 
@@ -49,7 +49,7 @@ async def _(session: CommandSession):
 3. 进入启动器，点击启动器左上角“没有游戏账户”，点击右下角+号，在弹出窗口中的“用户名”输入Maryt通行证邮箱，“密码”输入Maryt通行证密码，点击确定，等待登陆完成。
 4. 点击启动器左上角按钮，然后点击右下角“启动游戏”即可。进入游戏后无需再登陆，直接玩就行了。''')
 
-@on_natural_language(keywords={'注册', '登陆', '登入', '登录'})
+@on_natural_language(keywords={'注册', '登陆', '登入', '登录'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '注册')
 
@@ -59,7 +59,7 @@ async def _(session: CommandSession):
 转发给自己的QQ号，再下载，可以让下载变快。
 推荐使用MARTY唯二指定压缩软件合作伙伴7-zip和Bandizip解压客户端！''')
 
-@on_natural_language(keywords={'客户端'})
+@on_natural_language(keywords={'客户端'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '客户端')
 
@@ -71,7 +71,7 @@ async def _(session: CommandSession):
 3. 双击打开，等待窗口出现。
 4. 不管显示的内容是什么，一直点窗口右下角的Next键，最后点击Finish完成安装。''')
 
-@on_natural_language(keywords={'java'})
+@on_natural_language(keywords={'java'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, 'java')
 
@@ -87,7 +87,7 @@ async def _(session: CommandSession):
 输入/res set可以打开领地权限菜单。
 目前暂不开放领地飞行！''')
 
-@on_natural_language(keywords={'领地', '圈地'})
+@on_natural_language(keywords={'领地', '圈地'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '领地')
 
@@ -111,7 +111,7 @@ autoclose - 如果受保护的方块是门, 在打开后会帮你自动关上。
 AllowExplosions - 打开后, 爆炸会摧毁受保护的箱子。
 hopper - 打开后, 漏斗可以放入/取出箱子内的物品。''')
 
-@on_natural_language(keywords={'箱子锁','锁箱子'})
+@on_natural_language(keywords={'箱子锁','锁箱子'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '箱子锁')
 
@@ -123,7 +123,7 @@ async def _(session: CommandSession):
 指导书是你游玩过程的重要指引，如果不慎丢失，
 用4个泥土2x2摆放即可合成这本书！''')
 
-@on_natural_language(keywords={'新手包'})
+@on_natural_language(keywords={'新手包'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '新手包')
 
@@ -137,7 +137,7 @@ async def _(session: CommandSession):
 /lj 随身垃圾桶
 /dt 领取 MCBBS 顶贴奖励''')
 
-@on_natural_language(keywords={'命令', '指令'})
+@on_natural_language(keywords={'命令', '指令'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '命令')
 
@@ -148,7 +148,7 @@ async def _(session: CommandSession):
 2. 点击“复制到剪贴板”；
 3. 在QQ里粘贴，发给阿苟。''')
 
-@on_natural_language(keywords={'崩了', '崩溃'})
+@on_natural_language(keywords={'崩了', '崩溃'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '崩溃')
 
@@ -158,7 +158,11 @@ async def _(session: CommandSession):
 注意查看显示窗口的标签，尤其留意蓝色的i字标志，
 点进去是阿苟留下的重要说明。
 2. 在背包中用鼠标指向物品，有些物品的信息中包含提示。
-3. 主要模组的教程：
+3. 整合包完整All in one教程
+https://shimo.im/docs/N2A1vYgE5LfRmj3D/read
+强烈推荐！
+———————
+4. 主要模组的教程：
 热量与气候：
 金属熔炼机制：
 https://www.mcmod.cn/post/1049.html
@@ -178,7 +182,7 @@ https://www.mcmod.cn/post/1145.html
 1. 查看【记忆中的幻想乡】手册，在【祭坛】一节有投影工具；
 2. https://www.mcmod.cn/item/192891.html''')
 
-@on_natural_language(keywords={'教程', '玩法','攻略'})
+@on_natural_language(keywords={'教程', '玩法','攻略'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '教程')
 
@@ -200,7 +204,7 @@ http://afdian.net/@maryt
 3. 会员专属签到奖励；
 4. 享受自定义头衔，如已有其他头衔，
 享受个性化颜色定制权限。''')
-@on_natural_language(keywords={'会员', '充值', '赞助'})
+@on_natural_language(keywords={'会员', '充值', '赞助'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '会员')
 
@@ -215,6 +219,6 @@ async def _(session: CommandSession):
 4. 这样你就可以查看任务系统了。
 
 任务没有奖励，仅仅作为游玩引导。''')
-@on_natural_language(keywords={'任务'})
+@on_natural_language(keywords={'任务'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0, '任务')

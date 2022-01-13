@@ -24,8 +24,9 @@ IP地址客户端自带。
 贡献优质教程的玩家将获得服务器内BetaTester永久头衔。
 6. 最后也是最重要的，客户端和更新包下载地址【天翼云】：
 https://cloud.189.cn/web/share?code=b2uEN3vMnuqe
-访问码：ejp3''')
+访问码：ejp3
+(11th测试服已圆满完成她的任务)''')
 
-@on_natural_language(keywords={'测试服'})
+@on_natural_language(keywords={'测试服'}, only_to_me=False)
 async def _(session: NLPSession):
     return IntentCommand(90.0,'测试服')

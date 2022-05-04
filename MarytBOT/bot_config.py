@@ -17,3 +17,15 @@ SESSION_EXPIRE_TIMEOUT = timedelta(minutes=2)
 # 服务器和端口
 HOST = '127.0.0.1'
 PORT = 5702
+
+SESSION_RUNNING_EXPRESSION = ''
+"""
+{anno}`nonebot.typing.Expression_T`
+当有命令会话正在运行时，给用户新消息的回复。
+**默认值:** `'您有命令正在执行，请稍后再试'`
+用法:
+    ```python
+    SESSION_RUNNING_EXPRESSION = ''
+    ```
+    设置为空，表示当有命令会话正在运行时，不回复用户的新消息。
+"""

@@ -7,7 +7,7 @@ from nonebot import on_natural_language, NLPSession, IntentCommand
 __plugin_name__ = 'MARYTPerfectClassroom'
 __plugin_usage__ = '''
 用法：
-随机抽取一条游戏贴士，可以主动响应玩家调用，无玩家调用时以半点报时形式出现。
+随机抽取一条游戏贴士，可以主动响应玩家调用。
 '''
 
 # 变量和函数
@@ -24,15 +24,16 @@ JEI会将背包中的材料在工作台自动摆好！''',
 '''如果你不想跑图寻找林地府邸，
 可以在车万女仆祭坛上召唤唤魔者，
 召唤配方可以通过在JEI中
-查询魔力粉尘的用途看到。'''
+查询魔力粉尘的用途看到。''',
+'''养殖村民的玩家务必用方块把村民围好，
+因为原版MC的僵尸围城机制无视领地、蘑菇岛生物群系、亮度发生！
+详情戳d.g-c-z.cc/MBJSWC'''
 ]
 
 async def randomTips():
-    tip = tipsList[randint(0,len(tipsList)-1)]
-    return "【阿苟的完美教室】\n"+tip
+    return tipsList[randint(0,len(tipsList)-1)]
 
-# 主动响应部分
-@on_command('教室',permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+@on_command('教室',permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
 async def _(session: CommandSession):
     tips = await randomTips()
     await session.send(tips)

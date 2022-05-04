@@ -1,17 +1,29 @@
 from nonebot.command import CommandSession
 from nonebot.experimental.plugin import on_command
 from nonebot import on_natural_language, NLPSession, IntentCommand
+import asyncio
 
 
 __plugin_name__ = 'MARYTfaq'
 __plugin_usage__ = '''用法：响应出现在下表中的问题'''
 
-@on_command('简介', permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+@on_command('简介', permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
 async def _(session: CommandSession):
-    await session.send('''我们的服务器版本为1.12.2，
+    if session.event.group_id == 640614812:
+        await session.send('''我们的服务器版本为1.12.2，
 整合包为MCBBS精华整合包：
 [BGM][1.12.2][中英双语|拔刀剑]祝福或诅咒：无限力量之征——关于剑与理想的故事
 https://www.mcbbs.net/thread-1225741-1-1.html
+以热量与气候和拔刀剑为核心模组，
+以暮色森林和深渊国度为探索内容，
+加上丰富多彩的建筑、农业和其他模组，
+讲述了一个铸剑匠人在前人的引导下，
+在追逐理想的道路上一步步成长的故事。''')
+    elif session.event.group_id == 481482264:
+        await session.send('''本群是整合包为MCBBS精华整合包：
+[BGM][1.12.2][中英双语|拔刀剑]祝福或诅咒：无限力量之征——关于剑与理想的故事
+https://www.mcbbs.net/thread-1225741-1-1.html
+的官方交流群。
 以热量与气候和拔刀剑为核心模组，
 以暮色森林和深渊国度为探索内容，
 加上丰富多彩的建筑、农业和其他模组，
@@ -39,9 +51,10 @@ https://www.mcmod.cn/class/2573.html''')
 async def _(session: NLPSession):
     return IntentCommand(90.0, '模组')
 
-@on_command('注册', permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+@on_command('注册', permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
 async def _(session: CommandSession):
-    await session.send('''按以下步骤操作：
+    if session.event.group_id == 640614812:
+        await session.send('''按以下步骤操作：
 1. 进入官网 https://maryt.world
 注册Maryt通行证，并在官网登录通行证，这很重要！；
 2. 进入皮肤站 https://skin.maryt.world
@@ -53,9 +66,10 @@ async def _(session: CommandSession):
 async def _(session: NLPSession):
     return IntentCommand(90.0, '注册')
 
-@on_command('客户端', permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+@on_command('客户端', permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
 async def _(session: CommandSession):
-    await session.send('''目前可以从QQ群文件中下载到文件名【客户端】开头的客户端压缩包。
+    if session.event.group_id == 640614812:
+        await session.send('''目前可以从QQ群文件中下载到文件名【客户端】开头的客户端压缩包。
 转发给自己的QQ号，再下载，可以让下载变快。
 推荐使用MARTY唯二指定压缩软件合作伙伴7-zip和Bandizip解压客户端！''')
 
@@ -75,9 +89,10 @@ async def _(session: CommandSession):
 async def _(session: NLPSession):
     return IntentCommand(90.0, 'java')
 
-@on_command('领地', permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+@on_command('领地', permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
 async def _(session: CommandSession):
-    await session.send('''使用木锄圈地，
+    if session.event.group_id == 640614812:
+        await session.send('''使用木锄圈地，
 左键一个点，右键一个点，
 以两点为体对角线的长方体为你所圈领地的范围，
 输入
@@ -91,9 +106,10 @@ async def _(session: CommandSession):
 async def _(session: NLPSession):
     return IntentCommand(90.0, '领地')
 
-@on_command('箱子锁', permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+@on_command('箱子锁', permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
 async def _(session: CommandSession):
-    await session.send('''箱子锁使用指令
+    if session.event.group_id == 640614812:
+        await session.send('''箱子锁使用指令
 -----------
 /cpublic - 创建一个公共箱子，任何人都能打开它。
 /cprivate - 创建一个私人箱子，只有你（还有你添加的人）才能打开它。
@@ -127,9 +143,10 @@ async def _(session: CommandSession):
 async def _(session: NLPSession):
     return IntentCommand(90.0, '新手包')
 
-@on_command('命令', permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+@on_command('命令', permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
 async def _(session: CommandSession):
-    await session.send('''你经常用到的指令包括：
+    if session.event.group_id == 640614812:
+        await session.send('''你经常用到的指令包括：
 /qd 每日签到
 /cz 城镇系统
 /sg 收购商店
@@ -141,9 +158,10 @@ async def _(session: CommandSession):
 async def _(session: NLPSession):
     return IntentCommand(90.0, '命令')
 
-@on_command('崩溃', permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+@on_command('崩溃', permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
 async def _(session: CommandSession):
-    await session.send('''如果你的游戏崩溃，请按如下提示操作：
+    if session.event.group_id == 640614812:
+        await session.send('''如果你的游戏崩溃，请按如下提示操作：
 1. 点击游戏窗口中的“复制链接”按钮；
 2. 点击“复制到剪贴板”；
 3. 在QQ里粘贴，发给阿苟。''')
@@ -156,9 +174,15 @@ async def _(session: NLPSession):
 async def _(session: CommandSession):
     await session.send('''1. 鼠标指向物品，按键盘U查用途，R查配方，
 注意查看显示窗口的标签，尤其留意蓝色的i字标志，
-点进去是阿苟留下的重要说明。
+点进去可以看到重要的说明。
 2. 在背包中用鼠标指向物品，有些物品的信息中包含提示。
-3. 主要模组的教程：
+3. 整合包完整All in one教程
+https://shimo.im/docs/N2A1vYgE5LfRmj3D/read
+强烈推荐！
+———————
+4. 主要模组的教程：
+樱：
+锻铁炉与炼钢：https://www.mcmod.cn/item/215249.html
 热量与气候：
 金属熔炼机制：
 https://www.mcmod.cn/post/1049.html
@@ -169,22 +193,51 @@ https://www.mcmod.cn/post/1770.html
 成就、进度解锁条件一览表
 https://www.mcmod.cn/post/1705.html
 暮色森林：
+钻石不能用来开暮色门，请在JEI中搜索“沾满魔力的铜钥匙”，
+用这个代替钻石开门！
 BOSS攻略：https://www.mcmod.cn/post/155.html
 BOSS击杀顺序：https://www.mcmod.cn/post/649.html
+豆腐工艺：
+用烤豆腐块搭成地狱门形状，
+用豆腐魔杖代替打火石在门框点火，
+前往豆腐世界的传送门！
 深渊国度：
 https://www.mcmod.cn/post/809.html
 https://www.mcmod.cn/post/1145.html
 车万女仆祭坛的建造方法：
 1. 查看【记忆中的幻想乡】手册，在【祭坛】一节有投影工具；
 2. https://www.mcmod.cn/item/192891.html''')
+    await asyncio.sleep(60)
+
+@on_command('暮色', permission=lambda sender: ((not sender.is_privatechat) or sender.is_superuser))
+async def _(session: CommandSession):
+    await session.send('''暮色森林：
+钻石不能用来开暮色门，请在JEI中搜索“沾满魔力的铜钥匙”，
+用这个代替钻石开门！
+BOSS攻略：https://www.mcmod.cn/post/155.html
+BOSS击杀顺序：https://www.mcmod.cn/post/649.html''')
+@on_natural_language(keywords={'暮色'})
+async def _(session: NLPSession):
+    return IntentCommand(90.0, '暮色')
+
+@on_command('豆腐', permission=lambda sender: ((not sender.is_privatechat) or sender.is_superuser))
+async def _(session: CommandSession):
+    await session.send('''豆腐工艺：
+用烤豆腐块搭成地狱门形状，
+用豆腐魔杖代替打火石在门框点火，
+前往豆腐世界的传送门！''')
+@on_natural_language(keywords={'豆腐'})
+async def _(session: NLPSession):
+    return IntentCommand(90.0, '豆腐')
 
 @on_natural_language(keywords={'教程', '玩法','攻略'})
 async def _(session: NLPSession):
     return IntentCommand(90.0, '教程')
 
-@on_command('会员', permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+@on_command('会员', permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
 async def _(session: CommandSession):
-    await session.send('''请认准唯一指定赞助和会员购买渠道：
+    if session.event.group_id == 640614812:
+        await session.send('''请认准唯一指定赞助和会员购买渠道：
 http://afdian.net/@maryt
 【关于无偿赞助】
 无偿赞助不提供任何权限，但你的名字会被展示在群公告的感谢信上。
@@ -204,9 +257,10 @@ http://afdian.net/@maryt
 async def _(session: NLPSession):
     return IntentCommand(90.0, '会员')
 
-@on_command('任务', permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+@on_command('任务', permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
 async def _(session: CommandSession):
-    await session.send('''MARYT 10th v2.3.0版本加入了教程任务，
+    if session.event.group_id == 640614812:
+        await session.send('''MARYT 10th v2.3.0版本加入了教程任务，
 没有使用过任务系统的玩家，
 请按照如下步骤打开任务系统：
 1. 打开背包
@@ -218,3 +272,41 @@ async def _(session: CommandSession):
 @on_natural_language(keywords={'任务'})
 async def _(session: NLPSession):
     return IntentCommand(90.0, '任务')
+
+@on_command('联机', permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
+async def _(session: CommandSession):
+    if session.event.group_id == 481482264:
+        await session.send('''本整合包可以自由联机或开服。
+联机可以借助局域网联机、
+游侠联机、PCL启动器联机等工具，
+或阅读联机教学板块的相关帖子：
+https://www.mcbbs.net/forum.php?mod=forumdisplay&fid=178&filter=typeid&typeid=2659
+局域网联机如果遇到“登录失败：无效会话”的报错，
+请查阅https://www.mcmod.cn/class/1158.html''')
+@on_natural_language(keywords={'联机','连机'})
+async def _(session: NLPSession):
+    return IntentCommand(90.0, '联机')
+
+@on_command('没有中文', permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
+async def _(session: CommandSession):
+    if session.event.group_id == 481482264:
+        await session.send('''假如你发现整合包没有中文选项，
+按照如下步骤操作：
+1. 关闭游戏；
+2. 下载群文件的SmoothFont.jar文件；
+3. 用它覆盖mods文件夹中的同名文件；
+4. 重启游戏。''')
+@on_natural_language(keywords={'没中文','没有中文','选不了中文','只有英文'})
+async def _(session: NLPSession):
+    return IntentCommand(90.0, '没有中文')
+
+@on_command('怎么安装', permission=lambda sender: sender.from_group(640614812) and ((not sender.is_privatechat) or sender.is_superuser))
+async def _(session: CommandSession):
+    if session.event.group_id == 481482264:
+        await session.send('''在群内或CurseForge下载的，大小为33M左右的压缩包即为客户端整合包，主流启动器均可安装。
+安装视频教学请查阅：https://www.bilibili.com/video/av44819629
+如果你的启动器无法正常安装，请在这里找到你熟悉的启动器，将其更新到最新版本：
+https://www.mcbbs.net/forum.php?mod=forumdisplay&fid=43&filter=digest&digest=1&typeid=908''')
+@on_natural_language(keywords={'怎么安装','导入'})
+async def _(session: NLPSession):
+    return IntentCommand(90.0, '怎么安装')

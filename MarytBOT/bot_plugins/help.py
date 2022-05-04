@@ -6,9 +6,10 @@ __plugin_name__ = 'help'
 __plugin_usage__ = '显示机器人所有的命令。'
 
 
-@on_command('帮助', permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+@on_command('帮助', permission=lambda sender: ((not sender.is_privatechat) or sender.is_superuser))
 async def _(session: CommandSession):
-    await session.send('''我是MARYT自助问答机器人，在群里发送以下词语，我会回复对应的答案信息。希望对你有帮助！
+    if session.event.group_id == 640614812:
+        await session.send('''我是MARYT自助问答机器人，在群里发送以下词语，我会回复对应的答案信息。希望对你有帮助！
 ------------
 帮助 - 显示本条帮助信息。
 ------------
@@ -35,8 +36,21 @@ java - Java安装指引。
 https://github.com/RisingInIris2017/MARYTBot
 
 本机器人参考了开源项目Box-s-ville/luciabot，在此向项目开发者致谢！
-本机器人参考了MARYT热心玩家axty的代码，在此向axty致谢！
-''')
+本机器人参考了MARYT热心玩家axty的代码，在此向axty致谢！''')
+    elif session.event.group_id == 481482264:
+        await session.send('''在群里发送以下词语，我会回复对应的答案信息。希望对你有帮助！
+------------
+帮助 - 显示本条帮助信息。
+------------
+简介 - 介绍整合包的主要内容。
+模组 / 模组列表 - 主要模组的列表。
+java - Java安装指引。
+怎么安装/导入 - 整合包导入启动器教学。
+联机/连机 - 整合包联机教学。
+------------
+如果你认为机器人还应该回答其他的常见问题，可以联系德里奇进行添加。
+本机器人参考了开源项目Box-s-ville/luciabot，在此向项目开发者致谢！
+本机器人参考了热心玩家axty的代码，在此向axty致谢！''')
 
 @on_natural_language(keywords={'帮助'})
 async def _(session: NLPSession):

@@ -1,6 +1,9 @@
 from nonebot.command import CommandSession
 from nonebot.experimental.plugin import on_command
 from nonebot import on_natural_language, NLPSession, IntentCommand
+from nonebot.message import MessageSegment
+from asyncio import sleep
+
 import time
 from random import randint
 
@@ -15,13 +18,17 @@ async def todayGoodAndBad():
     timeNow = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     goodThing = goodList[randint(0,len(goodList)-1)]
     badThing = badList[randint(0,len(badList)-1)]
-    return "现在是："+timeNow+"，\n"+"今日老黄历：\n"+"宜："+goodThing+"\n"+"忌："+badThing
+    return "现在是："+timeNow+"，\n"+"今日老黄历：\n"+"宜："+goodThing+"\n"+"忌："+badThing+"\n"
 
-@on_command('黄历',aliases=('老黄历'), permission=lambda sender: (not sender.is_privatechat) or sender.is_superuser)
+@on_command('黄历', permission=lambda sender: sender.from_group(640614812) and (not sender.is_privatechat) or sender.is_superuser)
 async def _(session: CommandSession):
     todayGAB = await todayGoodAndBad()
-    await session.send(todayGAB)
-
+    randomPicIndex = randint(0, 30)         
+    if session.event.group_id == 640614812:
+        await session.send(MessageSegment.text(todayGAB) + MessageSegment.text("【今日苟语录】\n") + MessageSegment.image('file:///' + f"C:/Users/东风佬/Desktop/newMarytRobot/MarytBOT/语录/" + str(randomPicIndex) + ".jpg"))
+        await sleep(120)
+    
 @on_natural_language(keywords={'黄历'})
 async def _(session: NLPSession):
     return IntentCommand(90.0, '黄历')
+
